@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import sys
 
 while True:
     ns_cmd_path = "ns_404_config.json"
@@ -22,3 +23,5 @@ while True:
     else:
         print('Exiting NighShit Command')
         break
+        
+sys.exit(0)
