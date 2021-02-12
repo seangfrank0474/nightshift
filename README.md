@@ -12,6 +12,7 @@ NightShift is a little thing I felt like writing to see if I could do it. The Ni
 
 <dl>
   <dt><b>Usage:</b></dt>
+  <dt><b>Edit - nightshift collector and client where you see something like this <**server ip or url**></b></dt>
   <dt>Writing the 404 command</dt>
   <dd><i>python3 nighshift_cmd.py</i></dd>
   <dt>Starting up the server, currently runs on 8080</dt>
