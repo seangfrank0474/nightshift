@@ -1,6 +1,6 @@
 # nightshift
 
-NightShift is a little thing I felt like writing to see if I could do it. The NightShift project is an http 404 status C2 written in python3 using aiohttp.
+<b>NightShift is a little thing I felt like writing to see if I could do it. The NightShift project is an http 404 status C2 written in python3 using aiohttp.</b>
 
 <h3>Was inspired by two other projects:</h3>
 
@@ -11,8 +11,8 @@ NightShift is a little thing I felt like writing to see if I could do it. The Ni
 I am using json formating to send data back and forth. Also using a dga to generate new keys everday for encryption. It curently only works with linux.
 
 Usage:
-<p>This writes the custom 404 command</p><br>
-python3 nighshift_cmd.py
+<p>This writes the custom 404 command
+python3 nighshift_cmd.py</p>
 
 To Do:
 
