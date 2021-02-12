@@ -10,6 +10,10 @@ https://github.com/cedowens/SimpleC2_Server
 
 I am using json formating to send data back and forth. Also using a dga to generate new keys everday for encryption. It curently only works with linux.
 
+Usage:
+This writes the custom 404 command
+python3 nighshift_cmd.py
+
 To Do:
 
 Use the dga fuction to generate and check the domains for your flexability.
