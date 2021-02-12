@@ -2,11 +2,11 @@
 
 NightShift is a little thing I felt like writing to see if I could do it. The NightShift project is an http 404 status C2 written in python3 using aiohttp.
 
-Was inspired by two other projects:
+<h3>Was inspired by two other projects:</h3>
 
-https://github.com/theG3ist/404
+<p>https://github.com/theG3ist/404</p>
 
-https://github.com/cedowens/SimpleC2_Server
+<p>https://github.com/cedowens/SimpleC2_Server</p>
 
 I am using json formating to send data back and forth. Also using a dga to generate new keys everday for encryption. It curently only works with linux.
 
