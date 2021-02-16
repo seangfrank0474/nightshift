@@ -1,7 +1,6 @@
 # nightshift
 
-<center><h2>NightShift - Burning the midnight oil</h2></center>
-<h2><center>404 C2</center></h2>
+<h2>NightShift 404 C2 - Burning the midnight oil</h2>
 <p>
 NightShift is a little thing I felt like writing to see if I could do it. The NightShift project is an http 404 status C2 written in python3 using aiohttp. I am using json formating to send data back and forth. Also using a dga to generate new keys everday for encryption. It curently only works with linux.
 </p>
