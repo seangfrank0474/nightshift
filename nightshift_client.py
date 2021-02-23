@@ -15,7 +15,7 @@ from datetime import datetime
 from subprocess import (PIPE, Popen)
 from nightshift_dga import NightShift_DGA
 from nightshift_cipher import NightShift_Cipher
-from nightshift_collector import NightShift_Init_Check
+from nightshift_client_init import NightShift_Init_Check
 
 class NightShift_Client():
     
