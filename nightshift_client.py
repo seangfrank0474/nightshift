@@ -90,7 +90,7 @@ class NightShift_Client():
                         ns_ss_sec = 60 * ns_rand_num
                 except:
                     pass
-                print('[+] {0:s} --> Response from NightShif Server --> {1:s} --> NightShift Client next check-in in --> {2:s} seconds.'.format(str(datetime.now()),ns_data_post_resp,str(ns_ss_sec)))
+                print('[+] {0:s} --> Response from NightShift Server --> {1:s} --> NightShift Client next check-in in --> {2:s} seconds.'.format(str(datetime.now()),ns_data_post_resp,str(ns_ss_sec)))
                 time.sleep(ns_ss_sec)
         except KeyboardInterrupt:
             print('\nInterrupted - NightShift Client exited due to a keyboard interrupt.') 
