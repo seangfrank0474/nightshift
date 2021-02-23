@@ -11,9 +11,9 @@ NightShift is a little thing I felt like writing to see if I could do it. The Ni
 <dl>
   <dt><b>Usage:</b></dt>
   <dt>No need to edit the file diectly, you can now confiugure the client and server (FQDN/IP, URI, User-Agent, listening port). Also if you set the port to 80 you will have to run the server under sudo.</dt>
-  <dd><i>python3 nighshift_configure.py</i></dd>
+  <dd><i>python3 nighshift_cs_conf.py</i></dd>
   <dt>Writing the 404 command</dt>
-  <dd><i>python3 nighshift_cmd.py</i></dd>
+  <dd><i>python3 nighshift_fof_cmd.py</i></dd>
   <dt>Starting up the server, currently runs on 8080</dt>
   <dd><i>python3 nighshift_server.py</i></dd>
   <dt>Starting up the client.</dt>
