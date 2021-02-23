@@ -35,7 +35,7 @@ class NightShift_Cipher():
     def decrypt(self,enc_passwd):
 	get_cipher = self._getcipher()
         cipher = get_cipher[0]
-        pad = get_cipher[2]
+        padding = get_cipher[2]
         DecodeAES = lambda c, b: c.decrypt(base64.b64decode(bytes(b, 'utf-8'))).decode('ascii').rstrip(padding)
         decoded = DecodeAES(cipher, enc_passwd)
         return decoded
