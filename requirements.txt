@@ -3,11 +3,12 @@ asyncio
 base64
 ctypes
 datetime
-dns
+dnspython
 hashlib
 json
 logging
 os
+pycryptodome
 string
 socket
 subprocess
