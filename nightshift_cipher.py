@@ -17,22 +17,25 @@ class NightShift_Cipher():
         get_key = NightShift_DGA()
         enc_key = get_key.ns_dga_algorithm(key_var)
         #enc_key = 'TEST-hMP#rgzt4!*EL7#psC@pgayB!G3'
-        cipher = AES.new(enc_key)
+	enc_key = bytes(enc_key, 'utf-8')
+        cipher = AES.new(enc_key, AES.MODE_ECB)
         blksz = 16
         padding = '{'
         pad = lambda s: s + (blksz - len(s) % blksz) * padding
         return cipher, pad, padding
     
     def encrypt(self,clear_text):
-        cipher = self._getcipher()[0]
-        pad = self._getcipher()[1]
-        EncodeAES = lambda c, s: base64.b64encode(c.encrypt(pad(s))).decode('ascii')
+	get_cipher = self._getcipher()
+        cipher = get_cipher[0]
+        pad = get_cipher[1]
+        EncodeAES = lambda c, s: base64.b64encode(c.encrypt(pad(s).encode('utf-8'))).decode('ascii')
         encoded = EncodeAES(cipher, clear_text)
         return encoded
     
     def decrypt(self,enc_passwd):
-        cipher = self._getcipher()[0]
-        padding = self._getcipher()[2]
+	get_cipher = self._getcipher()
+        cipher = get_cipher[0]
+        pad = get_cipher[2]
         DecodeAES = lambda c, b: c.decrypt(base64.b64decode(bytes(b, 'utf-8'))).decode('ascii').rstrip(padding)
         decoded = DecodeAES(cipher, enc_passwd)
         return decoded
