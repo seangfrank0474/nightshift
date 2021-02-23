@@ -17,7 +17,7 @@ class NightShift_Cipher():
         get_key = NightShift_DGA()
         enc_key = get_key.ns_dga_algorithm(key_var)
         #enc_key = 'TEST-hMP#rgzt4!*EL7#psC@pgayB!G3'
-	enc_key = bytes(enc_key, 'utf-8')
+        enc_key = bytes(enc_key, 'utf-8')
         cipher = AES.new(enc_key, AES.MODE_ECB)
         blksz = 16
         padding = '{'
