@@ -11,7 +11,7 @@ from Crypto.Cipher import AES
 from nightshift_dga import NightShift_DGA
 
 class NightShift_Cipher():
-	
+
     def _getcipher(self):
         key_var = "key"
         get_key = NightShift_DGA()
@@ -25,7 +25,7 @@ class NightShift_Cipher():
         return cipher, pad, padding
     
     def encrypt(self,clear_text):
-	get_cipher = self._getcipher()
+        get_cipher = self._getcipher()
         cipher = get_cipher[0]
         pad = get_cipher[1]
         EncodeAES = lambda c, s: base64.b64encode(c.encrypt(pad(s).encode('utf-8'))).decode('ascii')
@@ -33,7 +33,7 @@ class NightShift_Cipher():
         return encoded
     
     def decrypt(self,enc_passwd):
-	get_cipher = self._getcipher()
+        get_cipher = self._getcipher()
         cipher = get_cipher[0]
         padding = get_cipher[2]
         DecodeAES = lambda c, b: c.decrypt(base64.b64decode(bytes(b, 'utf-8'))).decode('ascii').rstrip(padding)
@@ -60,7 +60,7 @@ class NightShift_Cipher():
         else:
             print('-e <string> to encrypt\n-d <encrypted string> to decrypt\n-i <hostname+ostype> (i.e. examplehostposix or examplehostnt or output key from nightshift_dga.py)')
             sys.exit(1)
-				
+            
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         e_d_output = NightShift_Cipher().run()

