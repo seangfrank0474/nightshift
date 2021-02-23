@@ -5,7 +5,7 @@ NightShift is a little thing I felt like writing to see if I could do it. The Ni
 <dl>
   <dt><b>Was inspired by two other projects:</b></dt>
   <dd>https://github.com/theG3ist/404</dd>
-  <dd>https://github.com/theG3ist/404</dd>
+  <dd>https://github.com/cedowens/SimpleC2_Server</dd>
 </dl>
 
 <dl>
