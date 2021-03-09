@@ -3,15 +3,13 @@
 
 import aiohttp
 import asyncio
-import hashlib
+#import hashlib
 import os
 import sys
 import json
 import string
 import socket
-
-from nightshift_dga import NightShift_DGA
-from nightshift_cipher import NightShift_Cipher
+from nightshift_utility import NightShift_Cipher, NightShift_DGA
 
 class NightShift_Init_Check():
 
