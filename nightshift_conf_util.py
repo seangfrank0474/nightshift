@@ -71,5 +71,5 @@ if __name__ == "__main__":
             cs_conf()
         sys.exit(0)
     else:
-        print('Usage:\npython3 nightshift_cmd_conf.py cmd (to generate the fof c2 command)\npython3 nightshift_cmd_conf.py  conf (to generate a client/server configuration file)\n')
+        print('Usage:\npython3 nightshift_cmd_conf.py --cmd (to generate the fof c2 command)\npython3 nightshift_cmd_conf.py --conf (to generate a client/server configuration file)\n')
         sys.exit(1)
