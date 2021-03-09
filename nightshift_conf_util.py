@@ -64,10 +64,10 @@ def cs_conf():
         print('\nInterrupted - NightShift Command exited due to a keyboard interrupt.')
 
 if __name__ == "__main__":
-    if (len(sys.argv) > 1 and (sys.argv[1] == 'cmd' or sys.argv[1] == 'conf')):
-        if (sys.argv[1] == 'cmd'):
+    if (len(sys.argv) > 1 and (sys.argv[1] == '--cmd' or sys.argv[1] == '--conf')):
+        if (sys.argv[1] == '--cmd'):
             fof_conf()
-        elif  (sys.argv[1] == 'conf'):
+        elif  (sys.argv[1] == '--conf'):
             cs_conf()
         sys.exit(0)
     else:
