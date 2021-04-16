@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div class="wrapper row2">
+    <div id="container" class="clear">
+        <div id="fof" class="clear">
+            <div class="positioned">
+                <div class="hgroup">
+                    <h1>404</h1>
+                    <h2>Page Not Found</h2>
+                </div>
+                <p>The Page You Requested Could Not Be Found On Our Server</p>
+            </div>
+        </div>
+    </div>
+</div>
