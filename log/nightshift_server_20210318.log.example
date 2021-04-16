@@ -1,0 +1,4 @@
+2021-03-18 13:13:54,780 - {'host_data': {'os_type': 'posix', 'host_name': 'examplehost', 'ns_init': True}, 'host_hash': 'SHA256 Host Hash Check In'}
+2021-03-18 13:13:54,780 - 192.168.254.69 [18/Mar/2021:17:13:54 +0000] "POST /init/comms/post HTTP/1.1" 200 195 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.68"
+2021-03-18 13:13:57,791 - example.com [18/Mar/2021:17:13:57 +0000] "GET /fof/commands HTTP/1.1" 404 836 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.68"
+2021-03-18 13:15:56,131 - example.com [18/Mar/2021:17:15:56 +0000] "GET /fof/commands HTTP/1.1" 404 836 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.68"
