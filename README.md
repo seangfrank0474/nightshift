@@ -2,7 +2,8 @@
 <p>
 NightShift is a little thing I felt like writing to see if I could do it. The NightShift project is an http 404 status C2 written in python3 using aiohttp. I am using json formating to send data back and forth. Also using a dga to generate new keys everday for encryption. currently run fine under Windows and Linux as pure python. I have not built any portable bin/exe yet.
   
-Side not if this is used outside of education there is a dga function that doubles as a key generator to encrypt the data traffic. This dga function uses a dictionary for month seeds. You will want to change those to change the encryption keys. This file 
+Side not if this is used outside of education there is a dga function that doubles as a key generator to encrypt the data traffic. This dga function uses a dictionary for month seeds. You will want to change those to change the encryption keys. The file where the DGA function resides is in nightshift_utility.py.
+
 </p>
 <dl>
   <dt><b>Was inspired by two other projects:</b></dt>
